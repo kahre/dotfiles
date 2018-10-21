@@ -1,0 +1,8 @@
+#!/bin/bash
+echo '{"version":1}'
+# Begin Array
+echo '['
+# TomArray
+echo '[],'
+# Run that shit
+exec conky -c $HOME/.config/i3/conkyrc

@@ -1,0 +1,40 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+update_interval 1
+total_run_times 0
+short_units yes
+if_up_strictness address
+#use_spacer left
+override_utf8_locale no
+# set to 1 to disable averaging
+cpu_avg_samples 1
+border_inner_margin 0
+border_outer_margin 0
+
+TEXT
+${if_match "${exec amixer -c 1 get Master | grep Mono: | cut -d " " -f8 | tr -d '[],'}"=="on"}\
+\#[fg=colour74][ vol → ${exec amixer -c 1 get Master | grep Mono: | cut -d " " -f6 | tr -d '[],'} \#[fg=colour74]]\
+${endif}\
+\#[fg=colour74][ / \#[fg=colour252]→ ${fs_free /} \#[fg=colour74]]\
+[ home \#[fg=colour252]→ ${fs_free /home} \#[fg=colour74]]\
+[ ram \#[fg=colour252]→ ${memperc}% \#[fg=colour74]]\
+[ cpu \#[fg=colour252]→ ${cpu}% \#[fg=colour74]]\
+${if_match "${exec ifconfig | grep enp | grep RUNNING | wc -l}"!="0"}\
+[ net \#[fg=colour252]→ wired \#[fg=colour74]]\
+${else}\
+${if_match "${wireless_essid}"!="off/any"}\
+[ ssid \#[fg=colour252]→ ${wireless_essid} \#[fg=colour74]]\
+${endif}\
+${endif}\
+${if_match ${battery_percent}<=15}\
+[ \#[fg=colour196]BATTERY CRITICAL \#[fg=colour252]→ ${battery_short} \#[fg=colour74]]\
+${else}\
+[  \#[fg=colour252]→ ${battery_short} \#[fg=colour74]]\
+${endif}\
+${if_match "${mpd_status}"=="Stopped"}\
+\#[fg=colour74][ mpd \#[fg=colour252]→ ${mpd_status} \#[fg=colour74]]\
+${endif}\
+\#[fg=colour74][ ${time %A}\#[fg=colour252] ${time %d/%m-%Y %H:%M:%S} \#[fg=colour74]]\

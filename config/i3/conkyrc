@@ -1,0 +1,113 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+update_interval 1
+total_run_times 0
+short_units yes
+if_up_strictness address
+#use_spacer left
+override_utf8_locale no
+# set to 1 to disable averaging
+cpu_avg_samples 1
+border_inner_margin 0
+border_outer_margin 0
+
+TEXT
+[
+${if_match "${exec sh ~/.scripts/spotify/isrunning}"=="no"}
+${else}
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+{"full_text":"","color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#A0A0A0","separator":false,"separator_block_width":10},\
+{"full_text":"${exec sh ~/.scripts/spotify/spotifyartist}- ${exec sh ~/.scripts/spotify/spotifytitle}","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+{"full_text":"]","color":"\#6095C5","separator":false,"separator_block_width":1},
+${endif}
+\
+
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+${if_match "${exec amixer -c 0 get Master | grep Mono: | cut -d " " -f8 | tr -d '[],'}"=="on"}
+{"full_text":${if_match ${exec amixer -c 0 get Master | grep Mono: | cut -d " " -f6 | tr -d '[],%'}<1}""${else}${if_match ${exec amixer -c 0 get Master | grep Mono: | cut -d " " -f6 | tr -d '[],%'}>59}""${else}""${endif}${endif},"color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":${if_match "${exec amixer -c 0 get Master | grep Mono: | cut -d " " -f8 | tr -d '[],'}"=="on"}" →"${else}" "${endif},"color":"\#A0A0A0","separator":false,"separator_block_width":10},\
+{"full_text":"${exec amixer -c 0 get Master | grep Mono: | cut -d " " -f6 | tr -d '[],'}","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+${else}
+{"full_text":"  ","color":"\#6095C5","separator":false,"separator_block_width":3},\
+${endif}
+{"full_text":"]","color":"\#6095C5","separator":false,"separator_block_width":1},\
+\
+
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+${if_match ${fs_free_perc /}>20}
+{"full_text":"/","color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#A0A0A0","separator":false,"separator_block_width":10},\
+{"full_text":"${fs_free /}","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+${else}
+{"full_text":"/","color":"\#F5001d","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#F5001d","separator":false,"separator_block_width":10},\
+{"full_text":"${fs_free /}","color":"\#F5001d","separator":false,"separator_block_width":1},\
+${endif}
+{"full_text":" ]","color":"\#6095C5","separator":false,"separator_block_width":1},\
+\
+
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+${if_match ${fs_free_perc /}>20}
+{"full_text":"home","color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#A0A0A0","separator":false,"separator_block_width":10},\
+{"full_text":"${fs_free /home}","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+${else}
+{"full_text":"/","color":"\#F5001d","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#F5001d","separator":false,"separator_block_width":10},\
+{"full_text":"${fs_free /}","color":"\#F5001d","separator":false,"separator_block_width":1},\
+${endif}
+{"full_text":" ]","color":"\#6095C5","separator":false,"separator_block_width":1},\
+\
+
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+${if_match ${memperc}>85}
+{"full_text":"ram","color":"\#B58858","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#B58858","separator":false,"separator_block_width":10},\
+{"full_text":"${memperc}%","color":"\#B58858","separator":false,"separator_block_width":1},\
+${else}
+{"full_text":"ram","color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#A0A0A0","separator":false,"separator_block_width":10},\
+{"full_text":"${memperc}%","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+${endif}
+{"full_text":" ]","color":"\#6095C5","separator":false,"separator_block_width":1},\
+\
+
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+${if_match ${cpu}>20}
+{"full_text":"cpu","color":"\#B58858","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#B58858","separator":false,"separator_block_width":10},\
+{"full_text":"${cpu}%","color":"\#B58858","separator":false,"separator_block_width":1},\
+${else}
+{"full_text":"cpu","color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#A0A0A0","separator":false,"separator_block_width":10},\
+{"full_text":"${cpu}%","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+${endif}
+{"full_text":" ]","color":"\#6095C5","separator":false,"separator_block_width":1},\
+\
+
+
+${if_match "${exec ifconfig | grep enp | grep RUNNING | wc -l}"!="0"}\
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+{"full_text":"net","color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":" → ","color":"\#A0A0A0","separator":false,"separator_block_width":10},\
+{"full_text":"wired","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+{"full_text":" ]","color":"\#6095C5","separator":false,"separator_block_width":1},\
+${else}\
+${if_match "${wireless_essid}"!="off/any"}\
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+{"full_text":"ssid","color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":" →","color":"\#A0A0A0","separator":false,"separator_block_width":10},\
+{"full_text":"${wireless_essid wlp7s0}","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+{"full_text":" ]","color":"\#6095C5","separator":false,"separator_block_width":1},\
+${endif}\
+${endif}\
+
+{"full_text":"[ ","color":"\#6095C5","separator":false,"separator_block_width":1},\
+{"full_text":"${time %A}","color":"\#6095C5","separator":false,"separator_block_width":3},\
+{"full_text":" ${time %d/%m-%Y %H:%M:%S}","color":"\#A0A0A0","separator":false,"separator_block_width":1},\
+{"full_text":" ]","color":"\#6095C5","separator":false,"separator_block_width":1}\
+],

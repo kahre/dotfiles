@@ -1,0 +1,514 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[bar/top]
+monitor = HDMI-A-0
+width = 100%
+height = 20
+clickareas = 35
+
+background = #F2231F20
+foreground = #ccffffff
+linecolor = #F2231F20
+
+spacing = 2
+;spacing = 2
+lineheight = 16
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 0
+;module-margin-left = 1
+;module-margin-right = 1
+
+;font-0 = envypn:pixlabel-song = 𝄞 %artist% - %title%
+elsize=13;0
+font-0 = NotoSans-Regular:size=12;0
+font-1 = MaterialIcons:size=12;0
+font-2 = Termsynu:size=12;-1
+font-3 = FontAwesome:size=12;0
+
+tray-position = right
+
+modules-left = i3 
+;mpd
+modules-right = calendar volume memory cpu updates battery wlan eth date 
+
+[bar/side]
+monitor = DVI-I-0
+width = 100%
+height = 20 
+clickareas = 35
+
+background = #F2231F20
+foreground = #ccffffff
+linecolor = #F2231F20
+
+spacing = 2
+;spacing = 2
+lineheight = 16
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 0
+;module-margin-left = 1
+;module-margin-right = 1
+
+;font-0 = envypn:pixlabel-song = 𝄞 %artist% - %title%
+elsize=13;0
+font-0 = NotoSans-Regular:size=12;0
+font-1 = MaterialIcons:size=12;0
+font-2 = Termsynu:size=12;-1
+font-3 = FontAwesome:size=12;0
+
+;tray-position = right
+
+modules-left = i3
+modules-right = volume wlan date
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #222
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+prefix-colour = #6095C5
+fg-colour = #A0A0A0
+
+[bar/example]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 6.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+
+modules-left = bspwm i3
+modules-center = mpd
+modules-right = volume sep filesystem memory cpu wlan eth battery temperature date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+[module/menu-apps]
+type = custom/menu
+
+label-open=%{F#6095C5} 
+label-separator= %{F#6095C5}|%{F#A0A0A0}
+
+menu-0-0 = "  "
+menu-0-0-exec = chromium &
+menu-0-1 = "  "
+menu-0-1-exec = matchbox-keyboard &
+menu-0-2 = "  "
+menu-0-2-exec = termite &
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "kbl  "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+
+label-mounted = %{F#6095C5} [  %mountpoint% %{F#A0A0A0}     %free% %{F#6095C5} ]
+label-unmounted = 
+label-unmounted-foreground = ${colors.fg-colour}
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = #FFFFFF
+label-mode-background = #FFFFFF
+
+; focused = Active workspace on focused monitor
+label-focused = %{F#6095C5}[%name%]%{F#A0A0A0}
+label-focused-underline = #FFFFFF
+label-focused-padding = 3
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 2;${module/bspwm.label-occupied-padding}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = #FFFFFF
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = 2;${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%!
+label-urgent-background = #FFFFFF
+label-urgent-padding = 2;${module/bspwm.label-urgent-padding}
+
+[module/mpd]
+type = internal/mpd
+format-online = %{F#6095C5} [ %{F#A0A0A0} <label-song> <bar-progress> %{F#6095C5} <icon-prev> <toggle> <icon-stop> <icon-next> ]
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song = %artist% - %title%
+label-song-maxlen = 40
+label-song-ellipsis = true
+
+bar-progress-width = 20
+bar-progress-indicator = %{F#FFFFFF}|
+bar-progress-fill = %{F#6095C5}─
+bar-progress-empty = %{F#A0A0A0}─
+
+[module/mpd-light]
+type = internal/mpd
+format-online = %{F#6095C5} [ %{F#A0A0A0} <label-song> <bar-progress> %{F#6095C5} ]
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song = %artist% - %title%
+label-song-maxlen = 35
+label-song-ellipsis = true
+
+bar-progress-width = 20
+bar-progress-indicator = %{F#FFFFFF}|
+bar-progress-fill = %{F#6095C5}─
+bar-progress-empty = %{F#A0A0A0}─
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-underline = #f90000
+label = %{F#6095C5}[ cpu %{F#A0A0A0}   %percentage%% %{F#6095C5}]
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-underline = #4bffdc
+label = %{F#6095C5}[ ram %{F#A0A0A0}   %percentage_used%% %{F#6095C5}]
+
+[module/wlan]
+type = internal/network
+interface = wlp7s0
+interval = 3.0
+
+format-connected = %{F#6095C5}[ <ramp-signal> %{F#A0A0A0} <label-connected> %{F#6095C5}]
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = bad connection
+ramp-signal-1 = bad connection
+ramp-signal-2 = ssid
+ramp-signal-3 = ssid
+ramp-signal-4 = ssid
+ramp-signal-foreground = #6095C5
+
+[module/eth]
+type = internal/network
+interface = enp4s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+label-connected = %{F#6095C5}[ net %{F#A0A0A0}    wired %{F#6095C5}]
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+day = %A
+
+date = %{F#6095C5}%A%{F#A0A0A0}  %d/%m-%Y
+date-alt = %{F#A0A0A0}%d/%m-%Y
+
+time = %H:%M:%S
+time-alt = %H:%M
+
+format-underline = #0a6cf5
+
+label = %{F#6095C5}[  %date%  %time% %{F#6095C5} ]
+
+[module/volume]
+type = internal/volume
+
+format-volume = %{F#6095C5}[ <ramp-volume>  %{F#A0A0A0} <label-volume> %{F#6095C5}]
+label-volume = %percentage%%
+label-volume-foreground = #A0A0A0
+
+format-muted-foreground = ${colors.prefix-colour}
+label-muted = [  ]
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.prefix-colour}
+bar-volume-foreground-1 = ${colors.prefix-colour} 
+bar-volume-foreground-2 = ${colors.prefix-colour}
+bar-volume-foreground-3 = ${colors.prefix-colour}
+bar-volume-foreground-4 = ${colors.prefix-colour}
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false 
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+label-charging = C %percentage%%
+label-discharging = D %percentage%%
+
+format-charging = %{F#6095C5}[ <animation-charging>  %{F#A0A0A0}<label-charging> %{F#6095C5}]
+format-charging-underline = #ffb52a
+
+format-discharging = %{F#6095C5}[ <ramp-capacity>  %{F#A0A0A0}<label-discharging> %{F#6095C5}]
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full = %{F#6095C5}[ %{F#A0A0A0}<label-full> %{F#6095C5}]
+label-full = F 
+format-full-prefix-foreground = #A0A0A0
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = %{F#F5001D}CHARGE BATTERY 
+ramp-capacity-1 = %{F#FFA500} 
+ramp-capacity-2 = 
+ramp-capacity-foreground = #6095C5
+
+animation-charging-0 =
+animation-charging-1 =
+animation-charging-2 =
+animation-charging-foreground = #6095C5
+animation-charging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <labe#6095C5
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.seco#6095C5
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+compositing-background = xor
+;compositing-background = screen
+compositing-foreground = source
+compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
+[module/pomodoro]
+type = custom/script
+; Use pomodoro glyphs in Nerd fonts
+; exec = pymodoro --break-prefix " " --pomodoro-prefix " " --pomodoro  --empty  --break  --length 5
+; Use default symbols
+exec = pymodoro --length 5
+label = %{F#6095C5}[%{F#A0A0A0} %output% %{F#6095C5} ]%{F#A0A0A0}
+tail = true
+interval = 0
+; Start or reset the timer
+click-left = if [ -e ~/.pomodoro_session ]; then rm ~/.pomodoro_session; else echo "25 5" ~/.pomodoro_session; fi
+; Increase pomodoro time
+click-right = echo "$((`cut .pomodoro_session -d ' ' -f 1`+5)) 5" > .pomodoro_session
+; Reduce pomodoro time
+click-middle = echo "$((`cut .pomodoro_session -d ' ' -f 1`-5)) 5" > .pomodoro_session
+
+[module/calendar]
+type = custom/script
+interval = 1200
+format = <label>
+label = %{F#6095C5}[  %{F#A0A0A0}   %output%%{F#6095C5} ]
+exec = .scripts/next_training.sh
+exec-if = .scripts/is_connected.sh
+
+[module/updates]
+type = custom/script
+interval = 1200
+format = <label>
+format-underline = #dc322f
+label = %{F#6095C5}[  %{F#A0A0A0}   %output%%{F#6095C5}]
+; label = [ "%output:0:30%"
+exec = ~/.scripts/updates.sh
+exec-if = .scripts/is_connected.sh
+
+[module/redshift]
+type = custom/script
+interval = 5
+label = %{F#6095C5}[ %output% %{F#6095C5}]
+
+exec = ~/.scripts/redshift.sh

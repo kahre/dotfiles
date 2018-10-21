@@ -1,0 +1,60 @@
+alias pals='~/.config/shell/print_aliases.sh'
+
+# General
+alias c=clear
+alias mkdir='mkdir -p'
+alias chown='chown -v'
+alias chmod='chmod -v'
+alias grep='grep --color=auto'
+alias df='df -h'
+alias du='du -h'
+alias diff='diff --color=auto'
+alias pls=please
+alias jaja='yes | `history -1 | sed "s/[0-9]*  //"`'
+
+# Vim
+alias vim=nvim
+alias e=vim
+
+# Configurations
+alias ci3='e ~/.config/i3/config'
+alias calias='e ~/.config/shell/aliases'
+alias cterm='e ~/.config/termite/config'
+alias cpoly='e ~/.config/polybar/config'
+alias cboot='sudo e /boot/EFI/refind/refind.conf'
+alias cx='e ~/.Xresources && xrdb ~/.Xresources'
+alias cgnome='gnome-control-center'
+
+# Workarounds ;D
+alias gnome-control-center='XDG_CURRENT_DESKTOP=GNOME nohup gnome-control-center > /dev/null 2>&1 &'
+
+# Pacman
+alias pacman=yay
+alias reu='sudo mount -o remount,rw /boot && au'
+alias up='sudo pacman -Syu'
+alias au='pacman -Syu'
+alias cu='pacman -Qu'
+alias install='pacman -S'
+alias i=install
+alias search='pacman -Ss'
+alias s=search
+alias remove='pacman -Rns'
+alias r=remove
+alias uninstall=remove
+alias u=uninstall
+
+# Emacs
+alias emacs='emacsclient -nw -c'
+alias emre='urestart emacs'
+alias em=emacs
+alias jem='\emacs -nw'
+
+# Systemctl
+alias status='systemctl status'
+alias start='sudo systemctl start'
+alias stop='sudo systemctl stop'
+alias restart='sudo systemctl restart'
+alias ustatus='systemctl --user status'
+alias ustart='systemctl --user start'
+alias ustop='systemctl --user stop'
+alias urestart='systemctl --user restart'
