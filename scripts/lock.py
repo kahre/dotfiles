@@ -52,6 +52,4 @@ command.append("--noinputtext=")
 #command.append("--image=" + str(path))
 
 if(subprocess.call(command)):
-    backup = ["i3lock", "--image="+path]
-    subprocess.call(["notify-send", "-t 100000", str(backup)])
-    subprocess.call(backup)
+    subprocess.call(["i3lock", "--image="+path])
