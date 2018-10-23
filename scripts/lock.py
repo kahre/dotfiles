@@ -2,7 +2,7 @@
 import subprocess
 import os, random
 
-directory = os.environ["HOME"] + "Pictures/Wallpaper"
+directory = os.environ["HOME"] + "Pictures/Lockscreen"
 
 image = random.choice(os.listdir(directory))
 path = directory + "/" + image
@@ -51,6 +51,7 @@ command.append("--noinputtext=")
 
 #command.append("--image=" + str(path))
 
-print(command)
-
-subprocess.call(command)
+if(subprocess.call(command)):
+    backup = ["i3lock", "--image="+path]
+    subprocess.call(["notify-send", "-t 100000", str(backup)])
+    subprocess.call(backup)
