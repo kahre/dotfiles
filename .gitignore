@@ -2,3 +2,4 @@
 *~
 .i3
 default.target.wants*
+__pycache__
