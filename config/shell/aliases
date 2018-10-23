@@ -1,6 +1,5 @@
 alias pals='~/.config/shell/print_aliases.sh'
 
-
 # General
 alias c=clear
 alias mkdir='mkdir -p'
