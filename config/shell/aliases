@@ -1,4 +1,5 @@
 alias pals='~/.config/shell/print_aliases.sh'
+alias pal='source ~/.config/shell/print_all_aliases.sh'
 
 # General
 alias c=clear
@@ -9,7 +10,7 @@ alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -h'
 alias diff='diff --color=auto'
-alias pls=please
+alias pls='sudo `history -1 | sed "s/[0-9]*  //"`'
 alias jaja='yes | `history -1 | sed "s/[0-9]*  //"`'
 
 # Vim
@@ -24,6 +25,7 @@ alias cpoly='e ~/.config/polybar/config'
 alias cboot='sudo e /boot/EFI/refind/refind.conf'
 alias cx='e ~/.Xresources && xrdb ~/.Xresources'
 alias cgnome='gnome-control-center'
+alias czsh='e ~/.zshrc'
 
 # Workarounds ;D
 alias gnome-control-center='XDG_CURRENT_DESKTOP=GNOME nohup gnome-control-center > /dev/null 2>&1 &'
@@ -58,3 +60,11 @@ alias ustatus='systemctl --user status'
 alias ustart='systemctl --user start'
 alias ustop='systemctl --user stop'
 alias urestart='systemctl --user restart'
+
+# Networking
+alias ia='ip addr'
+alias il='ip link'
+alias ir='ip route'
+
+# Docker
+
