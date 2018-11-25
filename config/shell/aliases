@@ -19,7 +19,8 @@ alias e=vim
 
 # Configurations
 alias ci3='e ~/.config/i3/config'
-alias calias='e ~/.config/shell/aliases'
+alias ci3lock='e ~/.scripts/lock.py'
+alias calias='e ~/.config/shell/aliases && source ~/.config/shell/aliases'
 alias cterm='e ~/.config/termite/config'
 alias cpoly='e ~/.config/polybar/config'
 alias cboot='sudo e /boot/EFI/refind/refind.conf'
@@ -55,10 +56,14 @@ alias jem='\emacs -nw'
 alias status='systemctl status'
 alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'
+alias enable='sudo systemctl enable'
+alias disable='sudo systemctl disable'
 alias restart='sudo systemctl restart'
 alias ustatus='systemctl --user status'
 alias ustart='systemctl --user start'
 alias ustop='systemctl --user stop'
+alias uenable='systemctl --user enable'
+alias udisable='systemctl --user disable'
 alias urestart='systemctl --user restart'
 
 # Networking

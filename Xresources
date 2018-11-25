@@ -52,7 +52,7 @@ rofi.color-window: argb:e23f3f3f, argb:004d4d4d, #6095c5
 rofi.color-normal: argb:00231f20, #cccccc, argb:00231f20, #231f20, #cccccc
 rofi.color-active: #d1d1d1, #000000, #989898, #002a48, #f9f9f9
 rofi.color-urgent: #00f4ff, #000000, #009f8f, #005569, #ffffff
-rofi.lines: 4
+rofi.lines: 8
 rofi.padding: 5
 rofi.borderwidth: 0
 rofi.font: "DejaVu Sans Mono", 11

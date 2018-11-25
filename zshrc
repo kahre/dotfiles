@@ -87,3 +87,5 @@ plugins=(git zsh-syntax-highlighting archlinux)
 #
 # Personal aliases overrides all!
 source $HOME/.config/shell/aliases
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

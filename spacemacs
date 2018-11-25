@@ -309,6 +309,8 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq spacemacs-buffer-logo-title "[P I K A M A C S]")
+  (setq eclim-eclipse-dir "/usr/lib/eclipse"
+        eclim-executable "/usr/lib/eclipse/eclim")
   )
 
 (defun dotspacemacs/user-config ()

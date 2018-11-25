@@ -37,7 +37,7 @@ tray-position = right
 
 modules-left = i3 
 ;mpd
-modules-right = calendar volume memory cpu updates battery wlan eth date 
+modules-right = volume memory cpu updates battery wlan eth date 
 
 [bar/side]
 monitor = DVI-I-0

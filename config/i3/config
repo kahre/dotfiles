@@ -112,6 +112,9 @@ bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
 bindsym $mod+9 workspace $WS9
 
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev 
+
 # move focused container to workspace
 bindcode $mod+Shift+49 move container to workspace $WS0
 bindsym $mod+Shift+1 move container to workspace $WS1
@@ -212,15 +215,18 @@ floating_maximum_size -1 x -1
 
 # Custom scripts
 exec gnome-session
+exec_always ~/.scripts/start-bar.sh
 exec_always compton
 exec_always xrdb ~/.Xresources
-exec pulseaudio -k && pulseaudio --start
+#exec pulseaudio -k && pulseaudio --start
 exec --no-startup-id "feh --randomize --bg-fill ~/Pictures/.wallpaper/slideshow/"
-exec --no-startup-id termite
+#set $WS1 1 
+#set $WS2 2 
+exec --no-startup-id i3-msg 'workspace 2 ; exec firefox'
+exec --no-startup-id i3-msg 'workspace 1 ; exec termite'
 exec xset s off
 exec xset -dpms
 exec xset r rate 400 60
-exec_always ~/.scripts/start-bar.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -268,3 +274,6 @@ bindsym $mod+shift+a exec rofi -show window
 
 ## Rebind dmenu just in case
 bindsym $mod+shift+d exec dmenu_run -fn "-xos4-terminus-medium-r-*-*-12-*"
+
+## Floating Windows
+for_window [class="Steam"] floating enable
