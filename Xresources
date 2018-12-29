@@ -7,10 +7,11 @@ URxvt.scrollBar: false
 
 
 ! DPI-settings
-!URxvt.font: xft:Helvetica:pixelsize=12,\
-!            xft:Kochi Gothic:pixelsize=12,\
-!            xft:Baekmuk Gulim:pixelsize=12,\
-!	    xft:Monospace:pixelsize=12
+URxvt.font: xft:Helvetica:pixelsize=12,\
+            xft:Kochi Gothic:pixelsize=12,\
+            xft:Baekmuk Gulim:pixelsize=12,\
+	    xft:Monospace:pixelsize=12
+Xft.dpi: 210
 
 ! Colour-settings
 ! black
@@ -55,7 +56,7 @@ rofi.color-urgent: #00f4ff, #000000, #009f8f, #005569, #ffffff
 rofi.lines: 8
 rofi.padding: 5
 rofi.borderwidth: 0
-rofi.font: "DejaVu Sans Mono", 11
+rofi.font: "DejaVu Sans Mono", 30
 rofi.levenshtein-sort: true
 
 ! Dzen2 settings

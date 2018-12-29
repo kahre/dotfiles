@@ -20,7 +20,7 @@ SD_COLORIZE_SECTION="s/#.*/$CM_BLUE\0/g"
 SD_REMOVE_REDUNDANT="/^$/d; s/#/\n#/g"
 
 if [ $# -eq 0 ]; then
-    if [ `command -v bat` != "" ]; then
+    if [ "`command -v bat`" != "" ]; then
         cat ${ALIASPATH} | sed "${SD_COLORIZE_ALIAS}" | sed "${SD_COLORIZE_SECTION}" | sed "/pals/d" | sed "${SD_REMOVE_REDUNDANT}" | bat
     else
         cat ${ALIASPATH} | sed "${SD_COLORIZE_ALIAS}" | sed "${SD_COLORIZE_SECTION}" | sed "/pals/d" | sed "${SD_REMOVE_REDUNDANT}" | less

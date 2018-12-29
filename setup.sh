@@ -19,7 +19,7 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
   exit
 fi
 
-BACKUP_DIR=${HOME}dotfiles-backup
+BACKUP_DIR=${HOME}/dotfiles-backup
 if [ ! -d ${BACKUP_DIR} ]; then
   msg "Creating backup directory \"${BACKUP_DIR}\"."
   mkdir $BACKUP_DIR
@@ -37,17 +37,18 @@ function link {
   echo -e "\n"
 }
 
-link ${PWD}/config/dunst ${HOME}.config/dunst
-link ${PWD}/config/i3 ${HOME}.config/i3
-link ${PWD}/config/polybar ${HOME}.config/polybar
-#link ${PWD}/config/rofi ${HOME}.config/rofi
-link ${PWD}/config/shell ${HOME}.config/shell
-link ${PWD}/config/systemd ${HOME}.config/systemd
-link ${PWD}/config/termite ${HOME}.config/termite
-link ${PWD}/config/tmux ${HOME}.config/tmux
-link ${PWD}/prompt.zsh-theme ${HOME}.oh-my-zsh/themes/customprompt.zsh-theme
-link ${PWD}/scripts ${HOME}.scripts
-link ${PWD}/spacemacs ${HOME}.spacemacs
-link ${PWD}/tmux.conf ${HOME}.tmux.conf
-link ${PWD}/Xresources ${HOME}.Xresources
-link ${PWD}/zshrc ${HOME}.zshrc
+link ${PWD}/config/dunst ${HOME}/.config/dunst
+link ${PWD}/config/i3 ${HOME}/.config/i3
+link ${PWD}/config/polybar ${HOME}/.config/polybar
+#link ${PWD}/config/rofi ${HOME}/.config/rofi
+link ${PWD}/config/shell ${HOME}/.config/shell
+link ${PWD}/config/systemd ${HOME}/.config/systemd
+link ${PWD}/config/termite ${HOME}/.config/termite
+link ${PWD}/config/tmux ${HOME}/.config/tmux
+link ${PWD}/config/nvim ${HOME}/.config/nvim
+link ${PWD}/prompt.zsh-theme ${HOME}/.oh-my-zsh/themes/customprompt.zsh-theme
+link ${PWD}/scripts ${HOME}/.scripts
+link ${PWD}/spacemacs ${HOME}/.spacemacs
+link ${PWD}/tmux.conf ${HOME}/.tmux.conf
+link ${PWD}/Xresources ${HOME}/.Xresources
+link ${PWD}/zshrc ${HOME}/.zshrc

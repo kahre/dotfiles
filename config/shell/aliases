@@ -2,6 +2,7 @@ alias pals='~/.config/shell/print_aliases.sh'
 alias pal='source ~/.config/shell/print_all_aliases.sh'
 
 # General
+alias sudo='sudo '
 alias c=clear
 alias mkdir='mkdir -p'
 alias chown='chown -v'
@@ -10,8 +11,8 @@ alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -h'
 alias diff='diff --color=auto'
-alias pls='sudo `history -1 | sed "s/[0-9]*  //"`'
-alias jaja='yes | `history -1 | sed "s/[0-9]*  //"`'
+alias pls='sudo `\history -1 | sed "s/[0-9]*  //"`'
+alias jaja='yes | `\history -1 | sed "s/[0-9]*  //"`'
 
 # Mounting
 alias umount='sudo umount'
