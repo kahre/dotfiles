@@ -95,7 +95,7 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-exec --no-startup-id xrandr --output HDMI-A-0 --primary --auto --output DVI-I-0 --mode 1280x1024 --left-of HDMI-A-0
+exec --no-startup-id ~/.scripts/setup_screens.sh
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -139,7 +139,7 @@ set $WS7 7
 set $WS8 8
 set $WS9 9
 
-workspace $WS0 output DVI-I-0
+workspace $WS0 output DVI-I-1-1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -215,6 +215,8 @@ floating_maximum_size -1 x -1
 
 # Custom scripts
 exec gnome-session
+exec echo ~/.config/i3/config | entr i3-msg restart
+exec echo ~/.config/polybar/config | entr ~/.scripts/start-bar.sh
 exec_always ~/.scripts/start-bar.sh
 exec_always compton
 exec_always xrdb ~/.Xresources
@@ -224,9 +226,7 @@ exec --no-startup-id "feh --randomize --bg-fill ~/Pictures/.wallpaper/slideshow/
 #set $WS2 2 
 exec --no-startup-id i3-msg 'workspace 2 ; exec firefox'
 exec --no-startup-id i3-msg 'workspace 1 ; exec termite'
-exec xset s off
-exec xset -dpms
-exec xset r rate 400 60
+#exec ~/.scripts/disable_screensaver.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

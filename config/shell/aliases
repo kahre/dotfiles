@@ -13,6 +13,13 @@ alias diff='diff --color=auto'
 alias pls='sudo `history -1 | sed "s/[0-9]*  //"`'
 alias jaja='yes | `history -1 | sed "s/[0-9]*  //"`'
 
+# Mounting
+alias umount='sudo umount'
+alias mount='sudo mount'
+alias m='mount'
+alias um='umount'
+alias rwboot='mount -o remount,rw /boot'
+
 # Vim
 alias vim=nvim
 alias e=vim
@@ -23,6 +30,7 @@ alias ci3lock='e ~/.scripts/lock.py'
 alias calias='e ~/.config/shell/aliases && source ~/.config/shell/aliases'
 alias cterm='e ~/.config/termite/config'
 alias cpoly='e ~/.config/polybar/config'
+alias cdunst='e ~/.config/dunst/dunstrc'
 alias cboot='sudo e /boot/EFI/refind/refind.conf'
 alias cx='e ~/.Xresources && xrdb ~/.Xresources'
 alias cgnome='gnome-control-center'
@@ -33,7 +41,7 @@ alias gnome-control-center='XDG_CURRENT_DESKTOP=GNOME nohup gnome-control-center
 
 # Pacman
 alias pacman=yay
-alias reu='sudo mount -o remount,rw /boot && au'
+alias reu='rwboot && au'
 alias up='sudo pacman -Syu'
 alias au='pacman -Syu'
 alias cu='pacman -Qu'

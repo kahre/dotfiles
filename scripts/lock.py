@@ -2,7 +2,7 @@
 import subprocess
 import os, random
 
-directory = os.environ["HOME"] + "Pictures/Lockscreen"
+directory = os.environ["HOME"] + "/Pictures/Lockscreen"
 
 image = random.choice(os.listdir(directory))
 path = directory + "/" + image
@@ -38,6 +38,7 @@ command.append("--clock")
 command.append("--timecolor=" + timecolor)
 command.append("--timepos=3000:150")
 command.append("--timesize=50")
+command.append("--datestr=%A, %B %d %Y")
 command.append("--datecolor=" + datecolor)
 command.append("--verifcolor=" + timecolor)
 command.append("--wrongcolor=" + timecolor)
