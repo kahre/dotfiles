@@ -214,10 +214,11 @@ floating_minimum_size 200 x 200
 floating_maximum_size -1 x -1
 
 # Custom scripts
-exec_always xrandr --dpi 210
+#exec_always xrandr --dpi 210
 exec gnome-session
 exec echo ~/.config/i3/config | entr i3-msg restart
 exec echo ~/.config/polybar/config | entr ~/.scripts/start-bar.sh
+exec echo ~/.Xresources | entr xrdb ~/.Xresources
 exec_always ~/.scripts/start-bar.sh
 exec_always compton
 exec_always xrdb ~/.Xresources
