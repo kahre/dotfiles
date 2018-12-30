@@ -8,9 +8,22 @@
 ;=====================================================
 
 [bar/top]
-monitor = HDMI-2 
+;monitor = HDMI-2 
+;height = 20
+;lineheight = 16
+;font-0 = NotoSans-Regular:size=12;0
+;font-1 = MaterialIcons:size=12;0
+;font-2 = Termsynu:size=12;-1
+;font-3 = FontAwesome:size=12;0
+monitor = eDP1 
+height = 35
+lineheight = 40
+font-0 = NotoSans-Regular:size=20;0
+font-1 = MaterialIcons:size=20;0
+font-2 = Termsynu:size=20;-1
+font-3 = FontAwesome:size=20;0
+
 width = 100%
-height = 20
 clickareas = 35
 
 background = #F2231F20
@@ -19,7 +32,6 @@ linecolor = #F2231F20
 
 spacing = 2
 ;spacing = 2
-lineheight = 16
 padding-right = 0
 module-margin-left = 1
 module-margin-right = 0
@@ -28,10 +40,6 @@ module-margin-right = 0
 
 ;font-0 = envypn:pixlabel-song = 𝄞 %artist% - %title%
 elsize=13;0
-font-0 = NotoSans-Regular:size=12;0
-font-1 = MaterialIcons:size=12;0
-font-2 = Termsynu:size=12;-1
-font-3 = FontAwesome:size=12;0
 
 tray-position = right
 

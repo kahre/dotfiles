@@ -1,12 +1,14 @@
 [global]
-   font ="Monospace 8"
+   #font ="Monospace 8"
+   font ="Monospace 18"
    allow_markup = yes
    format ="<b>%s %p</b>\n%b"
    sort = yes
    indicate_hidden = true
    # geometry ="x5"
    idle_threshold = 0
-   geometry ="300x5-10+30"
+   #geometry ="300x5-10+30"
+   geometry ="800x8-20+50"
    alignment = center
    show_age_threshold = 60
    sticky_history = yes
