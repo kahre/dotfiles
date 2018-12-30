@@ -36,6 +36,7 @@ alias cboot='sudo e /boot/EFI/refind/refind.conf'
 alias cx='e ~/.Xresources && xrdb ~/.Xresources'
 alias cgnome='gnome-control-center'
 alias czsh='e ~/.zshrc'
+alias cvim='e ~/.config/nvim/init.vim'
 
 # Workarounds ;D
 alias gnome-control-center='XDG_CURRENT_DESKTOP=GNOME nohup gnome-control-center > /dev/null 2>&1 &'
