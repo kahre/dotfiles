@@ -45,7 +45,7 @@ tray-position = right
 
 modules-left = i3 
 ;mpd
-modules-right = volume memory cpu updates battery wlan eth date 
+modules-right = wanikani volume memory cpu updates battery wlan eth date 
 
 [bar/side]
 monitor = DVI-I-1-1
@@ -503,6 +503,16 @@ format = <label>
 label = %{F#6095C5}[  %{F#A0A0A0}   %output%%{F#6095C5} ]
 exec = .scripts/next_training.sh
 exec-if = .scripts/is_connected.sh
+
+[module/wanikani]
+type = custom/script
+interval = 300
+format = <label>
+format-underline = #dc322f
+label = %{F#6095C5}[  %{F#A0A0A0}   %output%%{F#6095C5}]
+exec = ~/.scripts/wanikani.py
+exec-if = .scripts/is_connected.sh
+click-left = xdg-open https://www.wanikani.com/review/session
 
 [module/updates]
 type = custom/script
