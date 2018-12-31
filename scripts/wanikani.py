@@ -32,6 +32,6 @@ with urllib.request.urlopen(url) as response:
         print(available_hour, "available in", int(minutes), "minutes")
     elif available_next_day > 0:
         hours = round(delta.seconds/60/60)
-        print("Next review is in", hours, "hours" if hours > 1 else "hour")
+        print("Next review is in ~", hours, "hours" if hours > 1 else "hour")
     else:
         print("Next review is",next_review_date.strftime(format_date))
