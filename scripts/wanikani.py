@@ -2,8 +2,19 @@
 import urllib.request
 import json
 import datetime
+import os.path
+import sys
+from os.path import expanduser
 
-token = "bf50368602ef90dae4e9aa113fb31490"
+tokenpath = expanduser("~")+"/.config/wanikani/token"
+
+if not os.path.isfile(tokenpath):
+    print("Missing token")
+    sys.exit(0)
+
+token = ""
+with open(tokenpath, "r") as token_file:
+    token = token_file.read().replace('\n', '')
 
 url = "https://www.wanikani.com/api/user/"+token+"/study-queue"
 
