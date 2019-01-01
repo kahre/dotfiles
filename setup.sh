@@ -40,7 +40,7 @@ function link {
 link ${PWD}/config/dunst ${HOME}/.config/dunst
 link ${PWD}/config/i3 ${HOME}/.config/i3
 link ${PWD}/config/polybar ${HOME}/.config/polybar
-#link ${PWD}/config/rofi ${HOME}/.config/rofi
+link ${PWD}/config/rofi ${HOME}/.config/rofi
 link ${PWD}/config/shell ${HOME}/.config/shell
 link ${PWD}/config/systemd ${HOME}/.config/systemd
 link ${PWD}/config/termite ${HOME}/.config/termite

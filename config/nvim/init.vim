@@ -42,6 +42,7 @@ nnoremap <leader>fed :vnew ~/.config/nvim/init.vim<enter>
 nnoremap <leader>qq :qa<enter>
 nnoremap <C-X>k :q<enter>
 nnoremap <C-F> :CtrlP<enter>
+nnoremap <leader><leader> :CtrlP<enter>
 
 " Move
 nnoremap <C-h> <c-w>h

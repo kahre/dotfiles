@@ -506,10 +506,10 @@ exec-if = .scripts/is_connected.sh
 
 [module/wanikani]
 type = custom/script
-interval = 300
+interval = 120 
 format = <label>
 format-underline = #dc322f
-label = %{F#6095C5}[  %{F#A0A0A0}   %output%%{F#6095C5}]
+label = %{F#6095C5}[  %{F#A0A0A0}   %output%%{F#6095C5} ]
 exec = ~/.scripts/wanikani.py
 exec-if = .scripts/is_connected.sh
 click-left = xdg-open https://www.wanikani.com/review/session
@@ -520,7 +520,6 @@ interval = 1200
 format = <label>
 format-underline = #dc322f
 label = %{F#6095C5}[  %{F#A0A0A0}   %output%%{F#6095C5}]
-; label = [ "%output:0:30%"
 exec = ~/.scripts/updates.sh
 exec-if = .scripts/is_connected.sh
 
