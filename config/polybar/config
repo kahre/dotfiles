@@ -323,11 +323,16 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = bad connection
-ramp-signal-1 = bad connection
-ramp-signal-2 = ssid
-ramp-signal-3 = ssid
-ramp-signal-4 = ssid
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+;ramp-signal-0 = bad connection
+;ramp-signal-1 = bad connection
+;ramp-signal-2 = ssid
+;ramp-signal-3 = ssid
+;ramp-signal-4 = ssid
 ramp-signal-foreground = #6095C5
 
 [module/eth]
