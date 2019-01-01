@@ -270,7 +270,8 @@ bindsym $mod+l exec python ~/.scripts/lock.py
 bindsym $mod+k exec --no-startup-id "feh --randomize --bg-fill ~/Pictures/.wallpaper/slideshow/"
 
 ## Rofi-bindings
-bindsym $mod+d exec rofi -show run -terminal urxvt
+bindsym $mod+d exec "rofi -combi-modi drun,run,window -show combi -modi combi -terminal urxvt"
+bindsym $mod+alt+d exec rofi -show run -terminal urxvt
 bindsym $mod+shift+s exec rofi -show ssh -terminal urxvt
 bindsym $mod+shift+a exec rofi -show window
 

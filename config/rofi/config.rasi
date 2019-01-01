@@ -1,5 +1,5 @@
 configuration {
-/*	modi: "window,run,ssh";*/
+	modi: "window,drun,run,ssh,combi";
 /*	width: 50;*/
 	lines: 8;
 /*	columns: 1;*/
@@ -19,7 +19,7 @@ configuration {
 /*	run-shell-command: "{terminal} -e {cmd}";*/
 /*	window-command: "xkill -id {window}";*/
 /*	window-match-fields: "all";*/
-/*	icon-theme: ;*/
+    icon-theme: "gnome";
 /*	drun-match-fields: "name,generic,exec,categories";*/
 /*	drun-show-actions: false;*/
 /*	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";*/
