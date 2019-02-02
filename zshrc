@@ -88,4 +88,7 @@ plugins=(git zsh-syntax-highlighting archlinux)
 # Personal aliases overrides all!
 source $HOME/.config/shell/aliases
 
+export CC=/bin/clang
+export CXX=/bin/clang++
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

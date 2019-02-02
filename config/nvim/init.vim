@@ -25,7 +25,7 @@ Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "" Colorschemes
-Plug 'KKPMW/sacredforest-vim' 
+Plug 'KKPMW/sacredforest-vim'
 Plug 'flazz/vim-colorschemes'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -38,11 +38,14 @@ call plug#end()
 
 let mapleader = "\<Space>"
 nnoremap <leader>fed :vnew ~/.config/nvim/init.vim<enter>
+
 "nnoremap <leader><leader> :update<enter>
 nnoremap <leader>qq :qa<enter>
 nnoremap <C-X>k :q<enter>
+nnoremap <M-l> :YcmCompleter FixIt<enter>
 nnoremap <C-F> :CtrlP<enter>
 nnoremap <leader><leader> :CtrlP<enter>
+nnoremap <leader>k :wq<enter>
 
 " Move
 nnoremap <C-h> <c-w>h
@@ -86,9 +89,72 @@ set number relativenumber
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set mouse=a
 
 set wildmode=longest,list,full
 
 " Colour scheme stuff
 let g:airline_theme = 'bubblegum'
 colorscheme sacredforest
+
+function! HopToFromHFile()
+    let ext=expand('%:e')
+    let file=expand('%:p:r')
+    silent write
+    let editfile = ""
+    if(ext == "c")
+        let hfile = file.".h"
+        if(filereadable(hfile))
+            let editfile = hfile    
+        endif
+    endif
+    if(ext == "hpp")
+        let cppfile = file.".cpp"
+        if(filereadable(cppfile))
+            let editfile = cppfile
+        endif
+    endif
+    if(ext == "cpp")
+        let hfile = file.".h"
+        let hppfile = file.".hpp"
+        if(filereadable(hppfile))
+            let editfile=hppfile
+        elseif(filereadable(hfile))
+            let editfile=hfile
+        endif
+    endif
+    if(ext == "h")
+        let cfile = file.".c"
+        let cppfile = file.".cpp"
+        if(filereadable(cfile))
+            let editfile=cfile
+        elseif(filereadable(cppfile))
+            let editfile=cppfile
+        endif
+    endif
+    if(filereadable(editfile))
+        execute 'edit ' . editfile 
+    else
+        echo "Could not find a file to swap to"
+    endif
+
+endfunction
+
+" Relative or absolute numbers
+function! ToggleNumbers()
+    if(&nu == 1)
+        set nu!
+        set rnu
+    else
+        set nornu
+        set nu
+    endif
+endfunction
+
+
+nnoremap <leader>h :call HopToFromHFile()<CR>
+nnoremap <C-n> :call ToggleNumbers()<CR>
+
+set clipboard+=unnamedplus
+
+let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
