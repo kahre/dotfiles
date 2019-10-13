@@ -8,7 +8,7 @@
 ;=====================================================
 
 [bar/top]
-monitor = HDMI-2 
+monitor = DP-5 
 height = 20
 lineheight = 16
 font-0 = NotoSans-Regular:size=12;0
@@ -48,7 +48,7 @@ modules-left = i3
 modules-right = wanikani volume memory cpu updates battery wlan eth date 
 
 [bar/side]
-monitor = DVI-I-1-1
+monitor = HDMI-2 
 width = 100%
 height = 20 
 clickareas = 35

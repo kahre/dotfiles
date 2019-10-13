@@ -90,5 +90,10 @@ source $HOME/.config/shell/aliases
 
 export CC=/bin/clang
 export CXX=/bin/clang++
+export XDG_CONFIG_HOME=$HOME/.config
+export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+

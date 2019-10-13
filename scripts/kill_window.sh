@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-PID=`xprop | grep WM_PID | sed 's/.*= \([0-9]*\)/\1/g'`
+PID=$(xprop | grep WM_PID | sed 's/.*= \([0-9]*\)/\1/g')
 
-kill $PID
+kill "$PID"

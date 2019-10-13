@@ -5,7 +5,7 @@ cursor_shape = block
 browser = .scripts/urlparser
 
 [colors]
-background = rgba(20,20,20,0.95)
+background #191726
 # black
 color0 = #2E3436
 color8 = #555753
@@ -31,3 +31,21 @@ color14 = #34E2E2
 color7 = #D3D7CF
 color15 = #EEEEEC
 
+#foreground #FFFFFF
+#background #191726
+#color0 #191726
+#color1 #FF5C57
+#color2 #FFB536
+#color3 #F3F99D
+#color4 #5AF78E
+#color5 #9AEDFE
+#color6 #57C7FF
+#color7 #FFFFFF
+#color8 #191726
+#color9 #FF5C57
+#color10 #FFB536
+#color11 #F3F99D
+#color12 #5AF78E
+#color13 #9AEDFE
+#color14 #57C7FF
+#color15 #FFFFFF

@@ -2,8 +2,7 @@ let plugDir="~/.local/share/nvim/plugged"
 
 call plug#begin(plugDir)
 
-" Usage
-Plug 'PotatoesMaster/i3-vim-syntax'
+"" General 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -12,23 +11,42 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer --go-completer --java-completer' }
+Plug 'airblade/vim-gitgutter'
+Plug 'danro/rename.vim'
 
+"" Autocompletion
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer --go-completer --java-completer --ts-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
 
-" Lint
+"" Lint
 Plug 'w0rp/ale'
 
-" Interface
+"" Keybind management ycm+ale
+Plug 'ervandew/supertab'
+
+"" Interface
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'junegunn/goyo.vim'
+
 "" Colorschemes
 Plug 'KKPMW/sacredforest-vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'nightsense/cosmic_latte'
+Plug 'Nequo/vim-allomancer'
 
+"" Syntax
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'cespare/vim-toml'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'tikhomirov/vim-glsl'
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'udalov/kotlin-vim'
+
+Plug 'jason0x43/vim-js-indent'
 
 call plug#end()
 
@@ -53,6 +71,8 @@ nnoremap <C-j> <c-w>j
 nnoremap <C-k> <c-w>k
 nnoremap <C-l> <c-w>l
 
+nnoremap j gj
+nnoremap k gk
 """"""""""""""
 
 " CtrlP
@@ -78,14 +98,20 @@ let g:ale_c_parse_compile_commands=1
 let g:airline#extensions#ale#enabled=1
 let g:ale_linters={
 \   'cpp': ['clangtidy'],
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
 \}
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 let g:ale_fixers={
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'cpp': ['clang-format'],
+\   'rust': ['rustfmt'],
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['eslint'],
 \}
 
 " Standard stuff
-set number relativenumber
+set number
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -95,7 +121,7 @@ set wildmode=longest,list,full
 
 " Colour scheme stuff
 let g:airline_theme = 'bubblegum'
-colorscheme sacredforest
+colorscheme cosmic_latte 
 
 function! HopToFromHFile()
     let ext=expand('%:e')
@@ -105,7 +131,7 @@ function! HopToFromHFile()
     if(ext == "c")
         let hfile = file.".h"
         if(filereadable(hfile))
-            let editfile = hfile    
+            let editfile = hfile
         endif
     endif
     if(ext == "hpp")
@@ -133,7 +159,7 @@ function! HopToFromHFile()
         endif
     endif
     if(filereadable(editfile))
-        execute 'edit ' . editfile 
+        execute 'edit ' . editfile
     else
         echo "Could not find a file to swap to"
     endif
@@ -151,10 +177,10 @@ function! ToggleNumbers()
     endif
 endfunction
 
-
 nnoremap <leader>h :call HopToFromHFile()<CR>
 nnoremap <C-n> :call ToggleNumbers()<CR>
 
 set clipboard+=unnamedplus
+set splitright
 
 let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"

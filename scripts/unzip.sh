@@ -1,2 +1,2 @@
-#!/bin/bash
-for f in *; do unzip $f; done
+#!/bin/sh
+for f in *; do unzip "$f"; done
