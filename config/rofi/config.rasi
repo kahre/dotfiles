@@ -3,7 +3,8 @@ configuration {
 /*	width: 50;*/
 	lines: 8;
 /*	columns: 1;*/
-	font: ""DejaVu Sans Mono", 11";
+/*	font: ""DejaVu Sans Mono", 11"; */
+	font: ""DejaVu Sans Mono", 30";
 /*	bw: 0;*/
 /*	location: 0;*/
 	padding: 5;

@@ -5,13 +5,13 @@ URxvt.background: [70]#000000
 URxvt.foreground: White
 URxvt.scrollBar: false
 
-
 ! DPI-settings
-!URxvt.font: xft:Helvetica:pixelsize=12,\
-!            xft:Kochi Gothic:pixelsize=12,\
-!            xft:Baekmuk Gulim:pixelsize=12,\
-!	    xft:Monospace:pixelsize=12
-!Xft.dpi: 210
+URxvt.font: xft:Helvetica:pixelsize=30,\
+            xft:Kochi Gothic:pixelsize=30,\
+            xft:Baekmuk Gulim:pixelsize=30,\
+	    xft:Monospace:pixelsize=30
+! TODO: Turn me back on 
+Xft.dpi: 210
 
 ! Colour-settings
 ! black

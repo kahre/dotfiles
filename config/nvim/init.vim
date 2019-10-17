@@ -4,6 +4,7 @@ call plug#begin(plugDir)
 
 " Usage
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'tikhomirov/vim-glsl'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -85,7 +86,7 @@ let g:ale_fixers={
 \}
 
 " Standard stuff
-set number relativenumber
+set number
 set expandtab
 set tabstop=4
 set shiftwidth=4

@@ -1,8 +1,8 @@
 [global]
-   #geometry ="800x8-20+50"
-   #font ="Monospace 18"
-   geometry ="300x5-10+30"
-   font ="Monospace 8"
+   geometry ="800x8-20+50"
+   font ="Monospace 18"
+   #geometry ="300x5-10+30"
+   #font ="Monospace 8"
    
    allow_markup = yes
    format ="<b>%s %p</b>\n%b"

@@ -8,20 +8,20 @@
 ;=====================================================
 
 [bar/top]
-monitor = HDMI-2 
-height = 20
-lineheight = 16
-font-0 = NotoSans-Regular:size=12;0
-font-1 = MaterialIcons:size=12;0
-font-2 = Termsynu:size=12;-1
-font-3 = FontAwesome:size=12;0
-;monitor = eDP1 
-;height = 35
-;lineheight = 40
-;font-0 = NotoSans-Regular:size=20;0
-;font-1 = MaterialIcons:size=20;0
-;font-2 = Termsynu:size=20;-1
-;font-3 = FontAwesome:size=20;0
+;monitor = HDMI-2 
+;height = 20
+;lineheight = 16
+;font-0 = NotoSans-Regular:size=12;0
+;font-1 = MaterialIcons:size=12;0
+;font-2 = Termsynu:size=12;-1
+;font-3 = FontAwesome:size=12;0
+monitor = eDP1 
+height = 35
+lineheight = 40
+font-0 = NotoSans-Regular:size=20;0
+font-1 = MaterialIcons:size=20;0
+font-2 = Termsynu:size=20;-1
+font-3 = FontAwesome:size=20;0
 
 width = 100%
 clickareas = 35
@@ -48,7 +48,7 @@ modules-left = i3
 modules-right = wanikani volume memory cpu updates battery wlan eth date 
 
 [bar/side]
-monitor = DVI-I-1-1
+monitor = DVI-I-2-1
 width = 100%
 height = 20 
 clickareas = 35
@@ -317,17 +317,14 @@ format-connected = %{F#6095C5}[ <ramp-signal> %{F#A0A0A0} <label-connected> %
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected =  %{F#6095C5}[ wifi %{F#A0A0A0}   disconnected %{F#6095C5}]
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = weak
+ramp-signal-1 = weak 
+ramp-signal-2 = wifi 
+ramp-signal-3 = wifi 
+ramp-signal-4 = wifi 
+ramp-signal-5 = wifi 
 ;ramp-signal-0 = bad connection
 ;ramp-signal-1 = bad connection
 ;ramp-signal-2 = ssid
@@ -344,10 +341,6 @@ format-connected-underline = #55aa55
 label-connected = %{F#6095C5}[ net %{F#A0A0A0}    wired %{F#6095C5}]
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date

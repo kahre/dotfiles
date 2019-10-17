@@ -13,6 +13,8 @@ alias du='du -h'
 alias diff='diff --color=auto'
 alias pls='sudo `\history -1 | sed "s/[0-9]*  //"`'
 alias jaja='yes | `\history -1 | sed "s/[0-9]*  //"`'
+alias ssh="TERM='xterm-256color' ssh"
+alias make='make -j'
 
 # Mounting
 alias umount='sudo umount'
@@ -24,6 +26,8 @@ alias rwboot='mount -o remount,rw /boot'
 # Vim
 alias vim=nvim
 alias e=vim
+alias svim='sudo vim'
+alias se=svim
 
 # Configurations
 alias ci3='e ~/.config/i3/config'
@@ -44,7 +48,7 @@ alias crofi='e ~/.config/rofi/config.rasi'
 alias gnome-control-center='XDG_CURRENT_DESKTOP=GNOME nohup gnome-control-center > /dev/null 2>&1 &'
 
 # Pacman
-alias pacman=yay
+alias pacman=yay --answerdiff N 
 alias reu='rwboot && au'
 alias up='sudo pacman -Syu'
 alias au='pacman -Syu'
