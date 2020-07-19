@@ -15,6 +15,8 @@ alias pls='sudo `\history -1 | sed "s/[0-9]*  //"`'
 alias jaja='yes | `\history -1 | sed "s/[0-9]*  //"`'
 alias ssh="TERM='xterm-256color' ssh"
 alias make='make -j'
+alias reboot='sudo reboot'
+alias shutdown='sudo shutdown now'
 
 # Mounting
 alias umount='sudo umount'
@@ -31,6 +33,7 @@ alias se=svim
 
 # Configurations
 alias ci3='e ~/.config/i3/config'
+alias csway='e ~/.config/sway/config'
 alias ci3lock='e ~/.scripts/lock.py'
 alias calias='e ~/.config/shell/aliases && source ~/.config/shell/aliases'
 alias cterm='e ~/.config/termite/config'

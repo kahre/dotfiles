@@ -8,13 +8,6 @@
 ;=====================================================
 
 [bar/top]
-;monitor = HDMI-2 
-;height = 20
-;lineheight = 16
-;font-0 = NotoSans-Regular:size=12;0
-;font-1 = MaterialIcons:size=12;0
-;font-2 = Termsynu:size=12;-1
-;font-3 = FontAwesome:size=12;0
 monitor = eDP1 
 height = 35
 lineheight = 40
