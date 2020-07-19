@@ -13,13 +13,14 @@ alias du='du -h'
 alias diff='diff --color=auto'
 alias pls='sudo `\history -1 | sed "s/[0-9]*  //"`'
 alias jaja='yes | `\history -1 | sed "s/[0-9]*  //"`'
+alias reboot='sudo reboot'
+alias shutdown='sudo shutdown now'
 
 # Mounting
 alias umount='sudo umount'
 alias mount='sudo mount'
 alias m='mount'
 alias um='umount'
-alias rwboot='mount -o remount,rw /boot'
 
 # Vim
 alias vim=nvim
@@ -27,6 +28,7 @@ alias e=vim
 
 # Configurations
 alias ci3='e ~/.config/i3/config'
+alias csway='e ~/.config/sway/config'
 alias ci3lock='e ~/.scripts/lock.py'
 alias calias='e ~/.config/shell/aliases && source ~/.config/shell/aliases'
 alias cterm='e ~/.config/termite/config'
@@ -44,16 +46,14 @@ alias crofi='e ~/.config/rofi/config.rasi'
 alias gnome-control-center='XDG_CURRENT_DESKTOP=GNOME nohup gnome-control-center > /dev/null 2>&1 &'
 
 # Pacman
-alias pacman=yay
-alias reu='rwboot && au'
-alias up='sudo pacman -Syu'
-alias au='pacman -Syu'
-alias cu='pacman -Qu'
-alias install='pacman -S'
+alias reu='au'
+alias au='sudo xbps-install -Su'
+# alias cu='pacman -Qu'
+alias install='sudo xbps-install -S'
 alias i=install
-alias search='pacman -Ss'
+alias search='xbps-query -s'
 alias s=search
-alias remove='pacman -Rns'
+alias remove='sudo xbps-remove -R'
 alias r=remove
 alias uninstall=remove
 alias u=uninstall
@@ -64,7 +64,7 @@ alias emre='urestart emacs'
 alias em=emacs
 alias jem='\emacs -nw'
 
-# Systemctl
+# Services TODO 
 alias status='systemctl status'
 alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'

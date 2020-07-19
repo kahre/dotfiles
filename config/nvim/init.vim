@@ -12,11 +12,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer --go-completer --java-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer --go-completer --java-completer' }
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
+"Plug 'ervandew/supertab'
 
 " Lint
 Plug 'w0rp/ale'
@@ -59,7 +59,7 @@ nnoremap <C-l> <c-w>l
 let g:ctrlp_working_path_mode = 'ra'
 
 " AutoComplete & Snippets
-let g:UltiSnipsSnippetDir=plugDir.'/vim_snippets/UltiSnips'
+" let g:UltiSnipsSnippetDir=plugDir.'/vim_snippets/UltiSnips'
 let g:ycm_autoclose_preview_window_after_insertion=1
 
 " make YCM compatible with UltiSnips (using supertab)
