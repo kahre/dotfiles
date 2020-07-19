@@ -62,6 +62,8 @@ alias r=remove
 alias uninstall=remove
 alias u=uninstall
 
+alias paccache='echo "Clearing pacman cache..." && sudo paccache -r && echo "Clearing yay cache directory..." && yes | rm -r ~/.cache/yay'
+
 # Emacs
 alias emacs='emacsclient -nw -c'
 alias emre='urestart emacs'
@@ -88,4 +90,4 @@ alias il='ip link'
 alias ir='ip route'
 
 # Docker
-
+alias docker='sudo docker'
