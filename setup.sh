@@ -40,14 +40,22 @@ function link {
 link ${PWD}/config/dunst ${HOME}/.config/dunst
 link ${PWD}/config/i3 ${HOME}/.config/i3
 link ${PWD}/config/polybar ${HOME}/.config/polybar
+link ${PWD}/config/sway ${HOME}/.config/sway
+link ${PWD}/config/waybar ${HOME}/.config/waybar
 link ${PWD}/config/rofi ${HOME}/.config/rofi
 link ${PWD}/config/shell ${HOME}/.config/shell
-link ${PWD}/config/systemd ${HOME}/.config/systemd
+if command -v systemctl &> /dev/null
+then
+    link ${PWD}/config/systemd ${HOME}/.config/systemd
+else
+    msg "Systemctl not found, ignoring systemd links"
+fi
 link ${PWD}/config/termite ${HOME}/.config/termite
 link ${PWD}/config/tmux ${HOME}/.config/tmux
 link ${PWD}/config/nvim ${HOME}/.config/nvim
 link ${PWD}/prompt.zsh-theme ${HOME}/.oh-my-zsh/themes/customprompt.zsh-theme
 link ${PWD}/scripts ${HOME}/.scripts
+# Maybe remove this soon
 link ${PWD}/spacemacs ${HOME}/.spacemacs
 link ${PWD}/tmux.conf ${HOME}/.tmux.conf
 link ${PWD}/Xresources ${HOME}/.Xresources

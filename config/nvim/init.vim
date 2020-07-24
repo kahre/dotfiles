@@ -19,9 +19,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "" Lint
 Plug 'w0rp/ale'
 
-"" Keybind management ycm+ale
-Plug 'ervandew/supertab'
-
 "" Interface
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
