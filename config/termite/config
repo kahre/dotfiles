@@ -1,5 +1,5 @@
 [options]
-clickable_url = true
+clickable_url = false 
 cursor_blink = system
 cursor_shape = block
 browser = .scripts/urlparser

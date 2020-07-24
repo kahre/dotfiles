@@ -1,17 +1,20 @@
 #!/bin/bash
 
-xrandr --output DP-5 --primary --auto
-xrandr --output HDMI-2 --auto --left-of DP-5
+MAN_CONFIG1="DisplayPort-2"
+MAN_CONFIG2="HDMI-A-0"
+
+xrandr --output $MAN_CONFIG1 --primary --auto
+xrandr --output $MAN_CONFIG2 --auto --left-of $MAN_CONFIG1
 
 OUTPUTS=$(xrandr | grep " connected" | sed 's/\(.*\) connected.*/\1/g')
 
 for OUTPUT in $OUTPUTS; do
     echo "Setting up output $OUTPUT"
-    if [[ $OUTPUT == "DP-5" ]]; then
+    if [[ $OUTPUT == "$MAN_CONFIG1" ]]; then
         echo "Manually configured, ignoring"
         continue
     fi
-    if [[ $OUTPUT == "HDMI-2" ]]; then
+    if [[ $OUTPUT == "$MANCONFIG2" ]]; then
         echo "Manually configured, ignoring"
         continue
     fi

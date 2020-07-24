@@ -4,8 +4,9 @@ EXTENSION="NO_EXT"
 PREFIX="NO_PREF"
 PAD=0
 START=1
+NUMERICAL_ORDER=0
 
-while getopts hdl:p:e:s: option
+while getopts hndl:p:e:s: option
 do
 case "${option}"
 in
@@ -14,6 +15,7 @@ p) PREFIX=${OPTARG};;
 e) EXTENSION=${OPTARG};;
 d) DRY_RUN="true";;
 l) PAD=${OPTARG};;
+n) NUMERICAL_ORDER="true";;
 s) START=${OPTARG};;
 *) echo "Invalid flag $option" && exit;;
 esac
@@ -28,14 +30,22 @@ if [[ "$EXTENSION" == "NO_EXT" ]]; then
     exit 1
 fi
 
+if [[ $NUMERICAL_ORDER == "true" ]]; then
+    echo "Numerical"
+    ALL=$(ls -v | grep ".*\.${EXTENSION}")
+else
+    ALL=*${EXTENSION}
+fi
+
 var=$START
-for FILE in *${EXTENSION}; do
+for FILE in $ALL; do
     printf -v FILENAME "${PREFIX}%0${PAD}d.${EXTENSION}" $var 
     var=$((var + 1))
     if [[ "$DRY_RUN" == "true" ]]; then
         echo "Dry run, would have moved $FILE to ${FILENAME}"
         continue
     fi
-
+        
+    echo "Moving $FILE to ${FILENAME}"
     mv "$FILE" "$FILENAME"
 done

@@ -8,7 +8,6 @@
 ;=====================================================
 
 [bar/top]
-monitor = DP-5 
 height = 20
 lineheight = 16
 font-0 = NotoSans-Regular:size=12;0
@@ -48,7 +47,7 @@ modules-left = i3
 modules-right = wanikani volume memory cpu updates battery wlan eth date 
 
 [bar/side]
-monitor = HDMI-2 
+monitor = HDMI-A-0 
 width = 100%
 height = 20 
 clickareas = 35
@@ -76,7 +75,7 @@ font-3 = FontAwesome:size=12;0
 ;tray-position = right
 
 modules-left = i3
-modules-right = volume wlan date
+modules-right = volume wlan date-jp date-blnk date-urg date
 
 [colors]
 ;background = ${xrdb:color0:#222}
@@ -365,8 +364,25 @@ format-underline = #0a6cf5
 
 label = %{F#6095C5}[  %date%  %time% %{F#6095C5} ]
 
+[module/date-urg]
+type = custom/script
+interval = 15
+
+exec = TZ='America/Los_Angeles' date +%H:%M
+
+label = %{F#6095C5}[ Urg %{F#A0A0A0} %output% %{F#6095C5} ]
+
+[module/date-jp]
+type = custom/script
+interval = 15
+
+exec = TZ='America/Mendoza' date +%H:%M
+
+label = %{F#6095C5}[ JP %{F#A0A0A0} %output% %{F#6095C5} ]
+
+
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = %{F#6095C5}[ <ramp-volume>  %{F#A0A0A0} <label-volume> %{F#6095C5}]
 label-volume = %percentage%%

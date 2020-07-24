@@ -9,15 +9,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
-Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
 
 "" Autocompletion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer --go-completer --java-completer --ts-completer' }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "" Lint
 Plug 'w0rp/ale'
@@ -56,11 +53,12 @@ call plug#end()
 
 let mapleader = "\<Space>"
 nnoremap <leader>fed :vnew ~/.config/nvim/init.vim<enter>
+set ignorecase
+set smartcase
 
 "nnoremap <leader><leader> :update<enter>
 nnoremap <leader>qq :qa<enter>
 nnoremap <C-X>k :q<enter>
-nnoremap <M-l> :YcmCompleter FixIt<enter>
 nnoremap <C-F> :CtrlP<enter>
 nnoremap <leader><leader> :CtrlP<enter>
 nnoremap <leader>k :wq<enter>
@@ -78,19 +76,13 @@ nnoremap k gk
 " CtrlP
 let g:ctrlp_working_path_mode = 'ra'
 
-" AutoComplete & Snippets
-let g:UltiSnipsSnippetDir=plugDir.'/vim_snippets/UltiSnips'
-let g:ycm_autoclose_preview_window_after_insertion=1
+" CoC
+let g:coc_global_extensions = ['coc-snippets','coc-json']
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Ale
 nnoremap <C-A-L> :ALEFix<enter>
@@ -101,13 +93,13 @@ let g:ale_linters={
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint'],
 \}
-let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 let g:ale_fixers={
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'cpp': ['clang-format'],
 \   'rust': ['rustfmt'],
 \   'javascript': ['prettier', 'eslint'],
 \   'typescript': ['eslint'],
+\   'cmake': ['cmakeformat']
 \}
 
 " Standard stuff
@@ -182,5 +174,3 @@ nnoremap <C-n> :call ToggleNumbers()<CR>
 
 set clipboard+=unnamedplus
 set splitright
-
-let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"

@@ -48,6 +48,17 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# Dropdowns
+for_window [instance="dropdown_*"] floating enable
+for_window [instance="dropdown_*"] move scratchpad
+for_window [instance="dropdown_*"] sticky enable
+for_window [instance="dropdown_*"] scratchpad show
+for_window [instance="dropdown_tmuxdd"] resize set 625 450
+for_window [instance="dropdown_dropdowncalc"] resize set 800 300
+for_window [instance="dropdown_tmuxdd"] border pixel 3
+for_window [instance="dropdown_dropdowncalc"] border pixel 2
+for_window [instance="dropdown_*"] move position center
+
 # change focus
 #bindsym $mod+j focus left
 #bindsym $mod+k focus down
@@ -139,8 +150,8 @@ set $WS7 7
 set $WS8 8
 set $WS9 9
 
-workspace $WS0 output HDMI-2
-workspace "$WS1" output DP-5 
+workspace $WS0 output HDMI-A-0
+workspace "$WS1" output DisplayPort-2 
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -221,7 +232,8 @@ smart_gaps on
 
 # Custom scripts
 # exec_always xrandr --dpi 210
-exec gnome-session
+#exec gnome-session
+exec dunst
 exec echo ~/.config/i3/config | entr i3-msg restart
 exec echo ~/.config/polybar/config | entr ~/.scripts/start-bar.sh
 exec echo ~/.Xresources | entr xrdb ~/.Xresources
@@ -259,9 +271,9 @@ bindsym $mod+ctrl+shift+r exec reboot
 bindsym $mod+g move workspace to output left
 
 ## Audio
-bindsym XF86AudioRaiseVolume exec amixer set Master 3%+
-bindsym XF86AudioLowerVolume exec amixer set Master 3%-
-bindsym XF86AudioMute exec amixer sset Master toggle && amixer sset Front toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +3
+bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -3
+bindsym XF86AudioMute exec --no-startup-id exec pulsemixer --toggle-mute 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
