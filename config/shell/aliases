@@ -67,7 +67,7 @@ then
     alias reu='sudo xbps-install -Su'
 
     alias install='sudo xbps-install -S'
-    alias search='xbps-query -s'
+    alias search='xbps-query -Rs'
     alias remove='sudo xbps-remove -R'
     alias orphans='sudo xbps-remove -o'
 fi
