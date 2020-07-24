@@ -1,2 +1,2 @@
-#!/bin/bash
-for f in *; do unrar x $$f; done
+#!/bin/sh
+for f in *; do unrar x "$f"; done

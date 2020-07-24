@@ -1,9 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-wget -q --spider https://duckduckgo.com
-
-if [ $? -eq 0 ]; then 
+if wget -q --spider https://duckduckgo.com; then 
     exit
 else 
-    exit -1
+    exit 1
 fi

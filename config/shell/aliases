@@ -8,13 +8,15 @@ alias mkdir='mkdir -p'
 alias chown='chown -v'
 alias chmod='chmod -v'
 alias grep='grep --color=auto'
+alias diff='diff --color=auto'
 alias df='df -h'
 alias du='du -h'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -Iv'
 alias diff='diff --color=auto'
 alias pls='sudo `\history -1 | sed "s/[0-9]*  //"`'
 alias jaja='yes | `\history -1 | sed "s/[0-9]*  //"`'
-alias ssh="TERM='xterm-256color' ssh"
-alias make='make -j'
 alias reboot='sudo reboot'
 alias shutdown='sudo shutdown now'
 
@@ -51,21 +53,36 @@ alias crofi='e ~/.config/rofi/config.rasi'
 alias gnome-control-center='XDG_CURRENT_DESKTOP=GNOME nohup gnome-control-center > /dev/null 2>&1 &'
 
 # Pacman
-alias pacman=yay --answerdiff N 
-alias reu='rwboot && au'
-alias up='sudo pacman -Syu'
-alias au='pacman -Syu'
-alias cu='pacman -Qu'
-alias install='pacman -S'
+if command -v pacman &> /dev/null
+then
+    alias pacman=yay --answerdiff N
+    alias reu='rwboot && sudo pacman -Syu'
+    alias cu='pacman -Qu'
+
+    alias install='pacman -S'
+    alias search='pacman -Ss'
+    alias remove='pacman -Rns'
+    alias orphans='pacman -Rns $(pacman -Qtdq)'
+
+    alias paccache='echo "Clearing pacman cache..." && sudo paccache -r && echo "Clearing yay cache directory..." && yes | rm -r ~/.cache/yay'
+fi
+
+if command -v xbps-query &> /dev/null
+then
+    alias reu='sudo xbps-install -Su'
+
+    alias install='sudo xbps-install -S'
+    alias search='xbps-query -s'
+    alias remove='sudo xbps-remove -R'
+    alias orphans='sudo xbps-remove -o'
+fi
+
+
 alias i=install
-alias search='pacman -Ss'
 alias s=search
-alias remove='pacman -Rns'
 alias r=remove
 alias uninstall=remove
 alias u=uninstall
-
-alias paccache='echo "Clearing pacman cache..." && sudo paccache -r && echo "Clearing yay cache directory..." && yes | rm -r ~/.cache/yay'
 
 # Emacs
 alias emacs='emacsclient -nw -c'
@@ -74,23 +91,33 @@ alias em=emacs
 alias jem='\emacs -nw'
 
 # Systemctl
-alias status='systemctl status'
-alias start='sudo systemctl start'
-alias stop='sudo systemctl stop'
-alias enable='sudo systemctl enable'
-alias disable='sudo systemctl disable'
-alias restart='sudo systemctl restart'
-alias ustatus='systemctl --user status'
-alias ustart='systemctl --user start'
-alias ustop='systemctl --user stop'
-alias uenable='systemctl --user enable'
-alias udisable='systemctl --user disable'
-alias urestart='systemctl --user restart'
+if command -v systemctl &> /dev/null
+then
+    alias status='systemctl status'
+    alias start='sudo systemctl start'
+    alias stop='sudo systemctl stop'
+    alias enable='sudo systemctl enable'
+    alias disable='sudo systemctl disable'
+    alias restart='sudo systemctl restart'
+    alias ustatus='systemctl --user status'
+    alias ustart='systemctl --user start'
+    alias ustop='systemctl --user stop'
+    alias uenable='systemctl --user enable'
+    alias udisable='systemctl --user disable'
+    alias urestart='systemctl --user restart'
+fi
 
 # Networking
 alias ia='ip addr'
 alias il='ip link'
 alias ir='ip route'
+alias pubip="curl -s https://duckduckgo.com/\?q=what+is+my+ip | grep -oP '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' - | xargs echo -e '\033[0;35m$(tput bold)Your public ip is:\033[0m'"
+
+# SSH
+alias ssh='TERM=xterm-256color ssh'
 
 # Docker
 alias docker='sudo docker'
+
+# Development
+alias nvm='echo "Initializing nvm" && unalias nvm && source /usr/share/nvm/init-nvm.sh && nvm' 

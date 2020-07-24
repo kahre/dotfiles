@@ -87,8 +87,14 @@ plugins=(git)
 #
 # Personal aliases overrides all!
 source $HOME/.config/shell/aliases
+source $HOME/.config/shell/aliases.d/*
 
 export CC=/bin/clang
 export CXX=/bin/clang++
+export XDG_CONFIG_HOME=$HOME/.config
+export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

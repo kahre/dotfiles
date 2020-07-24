@@ -3,4 +3,4 @@
 .i3
 default.target.wants*
 __pycache__
-config/sway/config.d
+*.d

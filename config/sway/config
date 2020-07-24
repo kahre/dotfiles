@@ -12,14 +12,14 @@ set $up k
 set $right l
 
 # Terminal emulator
-set $term st 
+set $term termite
 
 # Application launcher
-set $menu "rofi -combi-modi drun,run,window -show combi -modi combi -terminal st" 
+set $menu "rofi -combi-modi drun,run,window -show combi -modi combi -terminal $term" 
 set $menu-backup dmenu_path | dmenu | xargs swaymsg exec --
 
 # Wallpaper settings
-set $wallpaper $HOME/Pictures/wallpaper/howls_moving_castle_door_bg.png
+set $wallpaper $HOME/Pictures/wallpaper/plusle-minun.png
 set $lockscreen $HOME/Pictures/wallpaper/tales_of_earthsea.png
 
 # Lock settings
