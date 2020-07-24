@@ -2,33 +2,45 @@ let plugDir="~/.local/share/nvim/plugged"
 
 call plug#begin(plugDir)
 
-" Usage
-Plug 'PotatoesMaster/i3-vim-syntax'
+"" General 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
-Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer --go-completer --java-completer' }
+Plug 'airblade/vim-gitgutter'
+Plug 'danro/rename.vim'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
+"" Autocompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Lint
+"" Lint
 Plug 'w0rp/ale'
 
-" Interface
+"" Interface
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'junegunn/goyo.vim'
+
 "" Colorschemes
 Plug 'KKPMW/sacredforest-vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'nightsense/cosmic_latte'
+Plug 'Nequo/vim-allomancer'
 
+"" Syntax
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'cespare/vim-toml'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'tikhomirov/vim-glsl'
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'udalov/kotlin-vim'
+
+Plug 'jason0x43/vim-js-indent'
 
 call plug#end()
 
@@ -38,11 +50,12 @@ call plug#end()
 
 let mapleader = "\<Space>"
 nnoremap <leader>fed :vnew ~/.config/nvim/init.vim<enter>
+set ignorecase
+set smartcase
 
 "nnoremap <leader><leader> :update<enter>
 nnoremap <leader>qq :qa<enter>
 nnoremap <C-X>k :q<enter>
-nnoremap <M-l> :YcmCompleter FixIt<enter>
 nnoremap <C-F> :CtrlP<enter>
 nnoremap <leader><leader> :CtrlP<enter>
 nnoremap <leader>k :wq<enter>
@@ -53,24 +66,20 @@ nnoremap <C-j> <c-w>j
 nnoremap <C-k> <c-w>k
 nnoremap <C-l> <c-w>l
 
+nnoremap j gj
+nnoremap k gk
 """"""""""""""
 
 " CtrlP
 let g:ctrlp_working_path_mode = 'ra'
 
-" AutoComplete & Snippets
-let g:UltiSnipsSnippetDir=plugDir.'/vim_snippets/UltiSnips'
-let g:ycm_autoclose_preview_window_after_insertion=1
+" CoC
+let g:coc_global_extensions = ['coc-snippets','coc-json']
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Ale
 nnoremap <C-A-L> :ALEFix<enter>
@@ -78,14 +87,20 @@ let g:ale_c_parse_compile_commands=1
 let g:airline#extensions#ale#enabled=1
 let g:ale_linters={
 \   'cpp': ['clangtidy'],
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
 \}
 let g:ale_fixers={
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'cpp': ['clang-format'],
+\   'rust': ['rustfmt'],
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['eslint'],
+\   'cmake': ['cmakeformat']
 \}
 
 " Standard stuff
-set number relativenumber
+set number
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -95,7 +110,7 @@ set wildmode=longest,list,full
 
 " Colour scheme stuff
 let g:airline_theme = 'bubblegum'
-colorscheme sacredforest
+colorscheme cosmic_latte 
 
 function! HopToFromHFile()
     let ext=expand('%:e')
@@ -105,7 +120,7 @@ function! HopToFromHFile()
     if(ext == "c")
         let hfile = file.".h"
         if(filereadable(hfile))
-            let editfile = hfile    
+            let editfile = hfile
         endif
     endif
     if(ext == "hpp")
@@ -133,7 +148,7 @@ function! HopToFromHFile()
         endif
     endif
     if(filereadable(editfile))
-        execute 'edit ' . editfile 
+        execute 'edit ' . editfile
     else
         echo "Could not find a file to swap to"
     endif
@@ -151,10 +166,8 @@ function! ToggleNumbers()
     endif
 endfunction
 
-
 nnoremap <leader>h :call HopToFromHFile()<CR>
 nnoremap <C-n> :call ToggleNumbers()<CR>
 
 set clipboard+=unnamedplus
-
-let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
+set splitright
